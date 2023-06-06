@@ -1,40 +1,83 @@
 import mysql.connector
+from datetime import datetime
+import json
 from model import Funcionario
+from dal import FuncionarioDal, ProdutosDal
 
-cnx = mysql.connector.connect(user='root', password='',
-                              host='127.0.0.1',
-                              database='mercearia')
 
 class FuncionarioController():
     
     
-    def login(nome,senha):
+    def loginFuncionario(nome,senha):
                 
-            consultar = f"SELECT  *  FROM  funcionario WHERE nome = '{nome}' AND senha = '{senha}';"
-            cursor = cnx.cursor()
-            cursor.execute(consultar)
-            linhas = cursor.fetchall()
+            resultado = FuncionarioDal.loginFuncionario(nome,senha)
                 
-            if len(linhas) == 0:
-                print("Usuario ou senha está incorrecta \n")
-                return False
-            else:
+            if resultado :
                 print("Login efetuado com sucesso \n")
-                return True        
-            cursor.close()
+                return True
+            else:
+                print("Usuario ou senha está incorrecta \n")
+                return False        
+            
             
     def loginStaff(nome,senha):
-                
-            consultar = f"SELECT  *  FROM  funcionario WHERE nome = '{nome}' AND senha = '{senha}' AND staff = 1 ;"
-            cursor = cnx.cursor()
-            cursor.execute(consultar)
-            linhas = cursor.fetchall()
-                
-            if len(linhas) == 0:
-                return False
-            else:
-                return True        
-            cursor.close()            
+    
+        resultado = FuncionarioDal.loginStaff(nome,senha)                        
+        if resultado:
+            print("\nLogin efetuado com sucesso \n")
+            return True
+        else:
+            print("\nUsuario ou senha está incorrecta \n")
+            return False
+    
+    def venda (vendas,comprador,user):
+        
+        descVenda = []
+        for venda in vendas:
+            ProdutosDal.venda(venda[0],venda[1])
+            descProduto = ProdutosDal.buscar(venda[0],"idBD",venda[1])[0]  
+            descVenda.append(descProduto)
+            # print(f"id produto: {venda[0]} quantidade: {venda[1]}")
+        detalhes = FuncionarioController.detalhes(descVenda)
+        print(detalhes)    
+        valorTotal = FuncionarioController.calcVenda(descVenda)
+        #print(f'descrição: {descVenda} Valor: {valorTotal} comprador: {comprador} funcinario:{user}')
+        data = FuncionarioController.calcData()
+        FuncionarioDal.cadastroVenda(detalhes,valorTotal,comprador,user,data)
+        
+        
+    def detalhes(descVenda):
+        
+        resultDetalhes = []
+        for produto in descVenda:
+            resultDetalhes.append(f'{produto[7]}x {produto[1]}')
+        resultDetalhes = json.dumps(resultDetalhes)
+        return resultDetalhes
+        
+    def calcVenda(descVenda):
+        
+        totalVenda = 0
+        for vendaProduto in descVenda:
+           totalVenda = vendaProduto[5] * vendaProduto[7] + totalVenda    
+        return totalVenda
+    
+    def calcData():
+        d = datetime.today()#.strftime("%d/%m/%Y, %H:%M:%S")
+        return d        
+            
+            
+            
+           
+            
+            
+            
+            
+            
+
+    
+
+                        
+                        
             
         
         
@@ -42,7 +85,7 @@ class FuncionarioController():
         
 
 
-FuncionarioController.login("welington",507155)      
+# FuncionarioController.login("welington",507155)      
         
         
         
