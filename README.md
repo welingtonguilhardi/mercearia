@@ -36,11 +36,7 @@ Contém a lógica de controle do sistema:
 
 ## Execução
 
- No linux:
-   `python3 view.py`
-
-### No Windows:
-
-   `python view.py`
+No linux:`python3 view.py`
+No Windows: `python view.py`
 
 
