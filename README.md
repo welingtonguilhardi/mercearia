@@ -33,3 +33,16 @@ Contém a lógica de controle do sistema:
 2. **Dependências**: Certifique-se de ter o Python instalado, juntamente com o módulo `mysql-connector-python`. Você pode instalá-lo usando:
    ```bash
    pip install mysql-connector-python
+
+## Execução
+
+### No Windows:
+
+```bash
+python view.py
+
+
+###No linux:
+
+```bash
+python view.py
