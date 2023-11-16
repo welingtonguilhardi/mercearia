@@ -36,12 +36,19 @@ Contém a lógica de controle do sistema:
 
 ## Execução
 
+ No linux:
+
+   <pre>
+   ```bash
+   python3 view.py
+   ```
+   </pre>
+
 ### No Windows:
 
+   <pre>
    ```bash
    python view.py
+   ```
+   </pre>
 
-### No linux:
-
-   ```bash
-   python view.py
