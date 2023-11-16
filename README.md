@@ -38,11 +38,10 @@ Contém a lógica de controle do sistema:
 
 ### No Windows:
 
-```bash
-python view.py
+   ```bash
+   python view.py
 
+### No linux:
 
-###No linux:
-
-```bash
-python view.py
+   ```bash
+   python view.py
