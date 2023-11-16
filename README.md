@@ -37,18 +37,10 @@ Contém a lógica de controle do sistema:
 ## Execução
 
  No linux:
-
-   <pre>
-
-   python3 view.py
-
-   </pre>
+   `python3 view.py`
 
 ### No Windows:
 
-   <pre>
+   `python view.py`
 
-   python view.py
-
-   </pre>
 
