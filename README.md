@@ -1,7 +1,7 @@
 # Mercearia Guilhardi - Sistema de Vendas em Python
 
 ## Descrição do Projeto
-O Mercearia Guilhardi é um sistema de vendas desenvolvido em Python, utilizando o padrão MVC (Model-View-Controller) e o banco de dados MySQL para armazenar informações sobre produtos, funcionários e vendas.
+O Mercearia Guilhardi é um sistema de vendas desenvolvido em Python via console, utilizando o padrão MVC (Model-View-Controller) e o banco de dados MySQL para armazenar informações sobre produtos, funcionários e vendas.
 
 ## Funcionalidades Principais
 - Cadastro, busca, alteração e exclusão de produtos.
